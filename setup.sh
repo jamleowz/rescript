@@ -7,15 +7,15 @@
 #  |════════════════════════════════════════════════════════════════════════════════════════════════════════════════|
 #
 
-link="https://raw.githubusercontent.com/DindaPutriFN/DindaPutriFN/main/api"
+link="https://raw.githubusercontent.com/jamleowz/rescript/main"
 clear
-#echo "Port 22
+echo "Port 22
 Port 3303
-#Port 53" >> /etc/ssh/sshd_config
-#systemctl stop systemd-resolved
+Port 3303" >> /etc/ssh/sshd_config
+systemctl stop systemd-resolved
 systemctl restart ssh
 systemctl restart sshd
-#systemctl start systemd-resolved
+systemctl start systemd-resolved
 clear
 [[ -e $(which curl) ]] && if [[ -z $(cat /etc/resolv.conf | grep "1.1.1.1") ]]; then cat <(echo "nameserver 1.1.1.1") /etc/resolv.conf > /etc/resolv.conf.tmp && mv /etc/resolv.conf.tmp /etc/resolv.conf; fi
 clear
@@ -35,12 +35,12 @@ clear
 
 #domain
 read -rp "Masukkan Domain: " domain
-#read -p "Nameserver: " nsdomain
+read -p "Nameserver: " nsdomain
 #read -p "Api Bot Token: " api
 #read -p "Admin ID Telegram: " id
 #echo "$api" > /etc/funny/.keybot
 #echo "$id" > /etc/funny/.chatid
-#echo "$nsdomain" >/etc/slowdns/nsdomain
+echo "$nsdomain" >/etc/slowdns/nsdomain
 echo "$domain" > /etc/xray/domain
 
 #Key
@@ -148,8 +148,8 @@ clear
 #Mengintall Xray
 cd /etc/xray
 wget -q -O config.json "https://raw.githubusercontent.com/DindaPutriFN/sslh/main/config.json"
-#wget -q -O http.json "https://raw.githubusercontent.com/DindaPutriFN/sslh/main/http.json"
-#wget -q -O split.json "https://raw.githubusercontent.com/DindaPutriFN/sslh/main/split.json"
+wget -q -O http.json "https://raw.githubusercontent.com/DindaPutriFN/sslh/main/http.json"
+wget -q -O split.json "https://raw.githubusercontent.com/DindaPutriFN/sslh/main/split.json"
 chmod +x /etc/xray/*
 
 # Other
@@ -794,8 +794,8 @@ WebAPI: $api773
 =========================
 @fn_project Autoscript
 "
-CHATID="6389176425"
-KEY="6981433170:AAFhh3UQi2H_lsJiAjGEMoj4xad2TdNHQfI"
+CHATID="1766050144"
+KEY="7881208783:AAHbTd8GwARTBt_1HzsRLzaXLe07TKXDkqY"
 TIME="10"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 curl -s --max-time $TIME --data-urlencode "chat_id=$CHATID" --data-urlencode "text=$OUTPUT" $URL >/dev/null 2>&1
