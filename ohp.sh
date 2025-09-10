@@ -4,7 +4,7 @@
 # Download File Ohp
 
 cd /usr/bin
-wget -O ohp "https://raw.githubusercontent.com/DindaPutriFN/FN-API/main/ohp"
+wget -O ohp "https://raw.githubusercontent.com/jamleowz/rescript/main/ohp"
 chmod +x /usr/bin/ohp
 
 # Installing Service
