@@ -6,16 +6,43 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
-# Menentukan URL download untuk Chisel versi terbaru (pastikan ini adalah versi yang diinginkan)
-url="https://raw.githubusercontent.com/nadiavpn/Apex/main/chisel"
+# --- CONFIGURATION VARIABLES ---
+# You can change these values to suit your needs
+CHISEL_VERSION="1.9.1" # Check https://github.com/jpillora/chisel/releases for latest
+SSL_PORT="9443"
+HTTP_PORT="8000"
+TLS_CERT="/etc/xray/xray.key" # Will generate if not exists
+TLS_KEY="/etc/xray/xray.crt"  # Will generate if not exists
 
-# Download file Chisel
-echo "Downloading Chisell..."
-wget -q -O /usr/bin/chisell "${url}"
+# --- OFFICIAL DOWNLOAD URL ---
+# Constructing the official download URL for the latest version
+ARCH=$(uname -m)
+case $ARCH in
+  "x86_64")
+    ARCH="amd64"
+    ;;
+  "aarch64"|"arm64")
+    ARCH="arm64"
+    ;;
+  *)
+    echo "Unsupported architecture: $ARCH"
+    exit 1
+    ;;
+esac
 
-# Memberikan izin eksekusi pada file Chisel
-chmod +x /usr/bin/chisell
+# Official GitHub release URL
+URL="https://github.com/jpillora/chisel/releases/download/v${CHISEL_VERSION}/chisel_${CHISEL_VERSION}_linux_${ARCH}.gz"
 
+echo "Downloading Chisel v${CHISEL_VERSION} from official GitHub release..."
+echo "URL: $URL"
+
+# Download and extract Chisel
+wget -q -O /tmp/chisel.gz "${URL}"
+gunzip -f /tmp/chisel.gz
+mv /tmp/chisel /usr/bin/chisel
+chmod +x /usr/bin/chisel
+rm -
+echo "Chisel installed successfully to /usr/bin/chisel."
 # Membuat file service systemd untuk Chisel di port 9443 (HTTPS)
 echo "Creating systemd service for Chisel SSL (port 9443)..."
 cat <<EOF > /etc/systemd/system/chisell-ssl.service
