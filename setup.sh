@@ -351,11 +351,11 @@ wget -q https://raw.githubusercontent.com/jamleowz/rescript/main/chisel.sh; chmo
 
 #Install Lainya
 cd
-wget -q https://raw.githubusercontent.com/jamleowz/rescript/main/udp.sh && chmod +x udp.sh && ./udp.sh
+#wget -q https://raw.githubusercontent.com/jamleowz/rescript/main/udp.sh && chmod +x udp.sh && ./udp.sh
 
 # Install Plugin HideSSH
 cd
-#wget -q https://github.com/praiman99/Plugin-FN/raw/Beginner/plugin.sh ; chmod 777 plugin.sh ; ./plugin.sh ; rm -fr plugin.sh
+wget -q https://raw.githubusercontent.com/jamleowz/rescript/main/plugin1.sh ; chmod 777 plugin1.sh ; ./plugin.sh ; rm -fr plugin1.sh
 
 # Install Warp Cloudflare
 cd /root; wget -O wgcf.sh "https://raw.githubusercontent.com/jamleowz/rescript/main/install-warp.sh"; chmod +x /root/*; /root/wgcf.sh; rm -fr /root/*
