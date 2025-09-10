@@ -358,7 +358,7 @@ cd
 #wget -q https://github.com/praiman99/Plugin-FN/raw/Beginner/plugin.sh ; chmod 777 plugin.sh ; ./plugin.sh ; rm -fr plugin.sh
 
 # Install Warp Cloudflare
-*cd /root; wget -O wgcf.sh "https://raw.githubusercontent.com/jamleowz/rescript/main/install-warp.sh"; chmod +x /root/*; /root/wgcf.sh; rm -fr /root/*
+cd /root; wget -O wgcf.sh "https://raw.githubusercontent.com/jamleowz/rescript/main/install-warp.sh"; chmod +x /root/*; /root/wgcf.sh; rm -fr /root/*
 
 # Install Backup Google Drive
 cd /root
@@ -372,7 +372,7 @@ clear
 
 #Install OpenVPN
 cd
-*wget -q https://raw.githubusercontent.com/jamleowz/rescript/main/vpn.sh && chmod +x vpn.sh && ./vpn.sh
+wget -q https://raw.githubusercontent.com/jamleowz/rescript/main/vpn.sh && chmod +x vpn.sh && ./vpn.sh
 
 # // Membuat Service
 cat> /etc/systemd/system/xray.service << END
