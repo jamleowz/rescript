@@ -23,25 +23,25 @@ ANU=$(ip -o $ANU -4 route show to default | awk '{print $5}');
 # Install OpenVPN dan Easy-RSA
 apt install openvpn easy-rsa unzip -y
 apt install openssl iptables iptables-persistent -y
-mkdir -p /etc/openvpn/server/easy-rsa/
-cd /etc/openvpn/
-wget https://raw.githubusercontent.com/praiman99/Certificate-Openvpn-Mod/Beginner/vpn.zip
-unzip vpn.zip
-rm -f vpn.zip
-chown -R root:root /etc/openvpn/server/easy-rsa/
+#mkdir -p /etc/openvpn/server/easy-rsa/
+#cd /etc/openvpn/
+#wget https://raw.githubusercontent.com/praiman99/Certificate-Openvpn-Mod/Beginner/vpn.zip
+#unzip vpn.zip
+#rm -f vpn.zip
+#chown -R root:root /etc/openvpn/server/easy-rsa/
 
-cd
-mkdir -p /usr/lib/openvpn/
-cp /usr/lib/x86_64-linux-gnu/openvpn/plugins/openvpn-plugin-auth-pam.so /usr/lib/openvpn/openvpn-plugin-auth-pam.so
+#cd
+#mkdir -p /usr/lib/openvpn/
+#cp /usr/lib/x86_64-linux-gnu/openvpn/plugins/openvpn-plugin-auth-pam.so /usr/lib/openvpn/openvpn-plugin-auth-pam.so
 
 # nano /etc/default/openvpn
-sed -i 's/#AUTOSTART="all"/AUTOSTART="all"/g' /etc/default/openvpn
+#sed -i 's/#AUTOSTART="all"/AUTOSTART="all"/g' /etc/default/openvpn
 
 # restart openvpn dan cek status openvpn
-systemctl enable --now openvpn-server@server-tcp
-systemctl enable --now openvpn-server@server-udp
-/etc/init.d/openvpn restart
-/etc/init.d/openvpn status
+#systemctl enable --now openvpn-server@server-tcp
+#systemctl enable --now openvpn-server@server-udp
+#/etc/init.d/openvpn restart
+#/etc/init.d/openvpn status
 
 # aktifkan ip4 forwarding
 echo 1 > /proc/sys/net/ipv4/ip_forward
@@ -103,31 +103,31 @@ sed -i $MYIP2 /etc/openvpn/ssl.ovpn;
 
 cd
 # pada tulisan xxx ganti dengan alamat ip address VPS anda 
-/etc/init.d/openvpn restart
+#/etc/init.d/openvpn restart
 
 # masukkan certificatenya ke dalam config client TCP 1194
-echo '<ca>' >> /etc/openvpn/tcp.ovpn
-cat /etc/openvpn/server/ca.crt >> /etc/openvpn/tcp.ovpn
-echo '</ca>' >> /etc/openvpn/tcp.ovpn
+#echo '<ca>' >> /etc/openvpn/tcp.ovpn
+#cat /etc/openvpn/server/ca.crt >> /etc/openvpn/tcp.ovpn
+#echo '</ca>' >> /etc/openvpn/tcp.ovpn
 
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( TCP 1194 )
-cp /etc/openvpn/tcp.ovpn /var/www/html/tcp.ovpn
+#cp /etc/openvpn/tcp.ovpn /var/www/html/tcp.ovpn
 
 # masukkan certificatenya ke dalam config client UDP 2200
-echo '<ca>' >> /etc/openvpn/udp.ovpn
-cat /etc/openvpn/server/ca.crt >> /etc/openvpn/udp.ovpn
-echo '</ca>' >> /etc/openvpn/udp.ovpn
+#echo '<ca>' >> /etc/openvpn/udp.ovpn
+#cat /etc/openvpn/server/ca.crt >> /etc/openvpn/udp.ovpn
+#echo '</ca>' >> /etc/openvpn/udp.ovpn
 
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( UDP 2200 )
-cp /etc/openvpn/udp.ovpn /var/www/html/udp.ovpn
+#cp /etc/openvpn/udp.ovpn /var/www/html/udp.ovpn
 
 # masukkan certificatenya ke dalam config client SSL
-echo '<ca>' >> /etc/openvpn/ssl.ovpn
-cat /etc/openvpn/server/ca.crt >> /etc/openvpn/ssl.ovpn
-echo '</ca>' >> /etc/openvpn/ssl.ovpn
+#echo '<ca>' >> /etc/openvpn/ssl.ovpn
+#cat /etc/openvpn/server/ca.crt >> /etc/openvpn/ssl.ovpn
+#echo '</ca>' >> /etc/openvpn/ssl.ovpn
 
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( SSL )
-cp /etc/openvpn/ssl.ovpn /var/www/html/ssl.ovpn
+#cp /etc/openvpn/ssl.ovpn /var/www/html/ssl.ovpn
 
 #firewall untuk memperbolehkan akses UDP dan akses jalur TCP
 
@@ -143,7 +143,7 @@ netfilter-persistent reload
 # Restart service openvpn
 systemctl enable openvpn
 systemctl start openvpn
-/etc/init.d/openvpn restart
+#/etc/init.d/openvpn restart
 
 # Delete script
 history -c
