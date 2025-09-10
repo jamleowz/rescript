@@ -147,14 +147,14 @@ clear
 
 #Mengintall Xray
 cd /etc/xray
-wget -q -O config.json "https://raw.githubusercontent.com/DindaPutriFN/sslh/main/config.json"
-wget -q -O http.json "https://raw.githubusercontent.com/DindaPutriFN/sslh/main/http.json"
-wget -q -O split.json "https://raw.githubusercontent.com/DindaPutriFN/sslh/main/split.json"
+wget -q -O config.json "https://raw.githubusercontent.com/jamleowz/rescript/main/config.json"
+wget -q -O http.json "https://raw.githubusercontent.com/jamleowz/rescript/main/http.json"
+wget -q -O split.json "https://raw.githubusercontent.com/jamleowz/rescript/main/split.json"
 chmod +x /etc/xray/*
 
 # Other
 cd /usr/bin
-wget -q -O m.zip "https://raw.githubusercontent.com/DindaPutriFN/menu/main/.1.13.zip"
+wget -q -O m.zip "https://raw.githubusercontent.com/jamleowz/rescript/main/menu.zip"
 yes A | unzip m.zip
 rm -fr m.zip
 chmod +x *
@@ -194,10 +194,10 @@ timedatectl set-timezone Asia/Jakarta;
 
 #install latest xray
 cd /usr/bin
-wget -q https://raw.githubusercontent.com/DindaPutriFN/DindaPutriFN/main/api/xray.zip
-yes A | unzip xray.zip ; rm -fr xray.zip
+wget -q https://raw.githubusercontent.com/jamleowz/rescript/main/Xray.zip
+yes A | unzip Xray.zip ; rm -fr Xray.zip
 chmod +x *.dat
-chmod +x xray
+chmod +x Xray
 cd
 
 #profile
@@ -235,15 +235,15 @@ rm -fr cloudflared-linux-amd64.deb
 apt install nodejs -y
 
 #Install Speedtest
-#curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
-#sudo apt-get install speedtest -y
+curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
+sudo apt-get install speedtest -y
 
 #install nginx
 apt install nginx -y
 rm /etc/nginx/conf.d/default.conf
 cd /etc/nginx 
 rm -fr nginx.conf
-wget -q -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/DindaPutriFN/sslh/main/nginx.conf"
+wget -q -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/jamleowz/rescript/main/nginx.conf"
 cd
 
 #detail nama perusahaan
@@ -277,9 +277,9 @@ apt install socat cron bash-completion -y
 apt install ufw -y
 
 # swap ram 2gb
-#wget https://raw.githubusercontent.com/Cretezy/Swap/master/swap.sh -O swap
-#sh swap 2G
-#rm swap
+wget https://raw.githubusercontent.com/Cretezy/Swap/master/swap.sh -O swap
+sh swap 2G
+rm swap
 
 # Make Other
 touch /etc/xray/proxy.log
@@ -343,36 +343,36 @@ clear
 
 # Install Slowdns
 cd
-wget -q https://raw.githubusercontent.com/DindaPutriFN/Autoscript/main/slowdns.sh; chmod +x slowdns.sh; ./slowdns.sh; rm -fr slowdns.sh
+wget -q https://raw.githubusercontent.com/jamleowz/rescript/main/slowdns.sh; chmod +x slowdns.sh; ./slowdns.sh; rm -fr slowdns.sh
 
 # Install Chisel Proxy
 cd
-wget -q https://raw.githubusercontent.com/DindaPutriFN/Autoscript/main/chisel.sh; chmod +x chisel.sh; ./chisel.sh; rm -fr chisel.sh
+wget -q https://raw.githubusercontent.com/jamleowz/rescript/main/chisel.sh; chmod +x chisel.sh; ./chisel.sh; rm -fr chisel.sh
 
 #Install Lainya
 cd
-wget -q https://raw.githubusercontent.com/Rerechan02/UDP/main/udp.sh && chmod +x udp.sh && ./udp.sh
+wget -q https://raw.githubusercontent.com/jamleowz/rescript/main/udp.sh && chmod +x udp.sh && ./udp.sh
 
 # Install Plugin HideSSH
 cd
-wget -q https://github.com/praiman99/Plugin-FN/raw/Beginner/plugin.sh ; chmod 777 plugin.sh ; ./plugin.sh ; rm -fr plugin.sh
+#wget -q https://github.com/praiman99/Plugin-FN/raw/Beginner/plugin.sh ; chmod 777 plugin.sh ; ./plugin.sh ; rm -fr plugin.sh
 
 # Install Warp Cloudflare
-cd /root; wget -O wgcf.sh "https://raw.githubusercontent.com/DindaPutriFN/warp/main/install-warp.sh"; chmod +x /root/*; /root/wgcf.sh; rm -fr /root/*
+*cd /root; wget -O wgcf.sh "https://raw.githubusercontent.com/jamleowz/rescript/main/install-warp.sh"; chmod +x /root/*; /root/wgcf.sh; rm -fr /root/*
 
 # Install Backup Google Drive
 cd /root
-wget https://raw.githubusercontent.com/DindaPutriFN/enhanced/main/set-br.sh
-chmod +x /root/*
-cd /root
-./set-br.sh
-rm -fr /root/*
+#wget https://raw.githubusercontent.com/DindaPutriFN/enhanced/main/set-br.sh
+#chmod +x /root/*
+#cd /root
+#./set-br.sh
+#rm -fr /root/*
 
 clear
 
 #Install OpenVPN
 cd
-wget -q https://raw.githubusercontent.com/DindaPutriFN/DindaPutriFN/main/openvpn/vpn.sh && chmod +x vpn.sh && ./vpn.sh
+*wget -q https://raw.githubusercontent.com/jamleowz/rescript/main/vpn.sh && chmod +x vpn.sh && ./vpn.sh
 
 # // Membuat Service
 cat> /etc/systemd/system/xray.service << END
@@ -394,52 +394,51 @@ RestartPreventExitStatus=23
 WantedBy=multi-user.target
 END
 
-#cat> /etc/systemd/system/httpupgrade.service << END
-#[Unit]
-#Description=Xray by FunnyVPN
-#Documentation=https://indo-ssh.com
-#After=network.target nss-lookup.target
-#
-#[Service]
-#User=root
-#CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-#AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-#NoNewPrivileges=true
-#ExecStart=/usr/bin/xray -config /etc/xray/http.json
-#Restart=on-failure
-#RestartPreventExitStatus=23
-#
-#[Install]
-#WantedBy=multi-user.target
-#END
-#
-#cat> /etc/systemd/system/splithttp.service << END
-#[Unit]
-#Description=Xray by FunnyVPN
-#Documentation=https://indo-ssh.com
-#After=network.target nss-lookup.target
-#
-#[Service]
-#User=root
-#CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-#AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-#NoNewPrivileges=true
-#ExecStart=/usr/bin/xray -config /etc/xray/split.json
-#Restart=on-failure
-#RestartPreventExitStatus=23
-#
-#[Install]
-#WantedBy=multi-user.target
-#END
+cat> /etc/systemd/system/httpupgrade.service << END
+[Unit]
+Description=Xray by FunnyVPN
+Documentation=https://indo-ssh.com
+After=network.target nss-lookup.target
 
-#systemctl enable splithttp
-#systemctl enable httpupgrade
-#systemctl start splithttp
-#systemctl start httpupgrade
-#systemctl restart splithttp
-#systemctl restart httpupgrade
+[Service]
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/bin/xray -config /etc/xray/http.json
+Restart=on-failure
+RestartPreventExitStatus=23
 
-wget -O /usr/bin/badvpn https://raw.githubusercontent.com/powermx/badvpn/master/badvpn-udpgw
+[Install]
+WantedBy=multi-user.target
+END
+
+cat> /etc/systemd/system/splithttp.service << END
+[Unit]
+Description=Xray by FunnyVPN
+Documentation=https://indo-ssh.com
+After=network.target nss-lookup.target
+
+[Service]
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/bin/xray -config /etc/xray/split.json
+Restart=on-failure
+RestartPreventExitStatus=23
+
+[Install]
+WantedBy=multi-user.target
+END
+systemctl enable splithttp
+systemctl enable httpupgrade
+systemctl start splithttp
+systemctl start httpupgrade
+systemctl restart splithttp
+systemctl restart httpupgrade
+
+wget -O /usr/bin/badvpn https://raw.githubusercontent.com/jamleowz/rescript/main/badvpn
 chmod +x /usr/bin/badvpn
 cat> /etc/systemd/system/badvpn.service << END
 [Unit]
@@ -461,14 +460,14 @@ WantedBy=multi-user.target
 END
 
 # Seting Up Konfigurasi Badvpn Lainya
-#cd /etc
-#nohup badvpn --listen-addr 127.0.0.1:7100 --max-clients 500 & >/dev/null
-#nohup badvpn --listen-addr 127.0.0.1:7200 --max-clients 500 & >/dev/null
-#cd
+cd /etc
+nohup badvpn --listen-addr 127.0.0.1:7100 --max-clients 500 & >/dev/null
+nohup badvpn --listen-addr 127.0.0.1:7200 --max-clients 500 & >/dev/null
+cd
 
-wget "https://docs.google.com/uc?export=download&id=1IbwfNpKpa1JzvXsDT-WgNpp5nWrklisG" -O /usr/bin/ws-com
+wget "https://raw.githubusercontent.com/jamleowz/rescript/main/ws-epro" -O /usr/bin/ws-com
 chmod +x /usr/bin/ws-com
-wget -O /usr/bin/config.yaml "https://raw.githubusercontent.com/DindaPutriFN/FN-API/main/core/config.yaml"
+wget -O /usr/bin/config.yaml "https://raw.githubusercontent.com/jamleowz/rescript/main/config.yaml"
 chmod +x /usr/bin/config.yaml
 cat> /etc/systemd/system/proxy.service << END
 [Unit]
@@ -489,7 +488,7 @@ LimitNOFILE=1000000
 WantedBy=multi-user.target
 END
 
-wget -q -O /usr/bin/ws "https://raw.githubusercontent.com/DindaPutriFN/WebSocket-Proxy/main/ws.py"
+wget -q -O /usr/bin/ws "https://raw.githubusercontent.com/jamleowz/rescript/main/ws.py"
 cat> /etc/systemd/system/edu.service << END
 [Unit]
 Description=Proxy Socet All OS By Rerechan02
@@ -509,7 +508,7 @@ LimitNOFILE=1000000
 WantedBy=multi-user.target
 END
 
-wget -O /usr/bin/loop "https://raw.githubusercontent.com/DindaPutriFN/FN-API/main/core/quota.sh"
+wget -O /usr/bin/loop "https://raw.githubusercontent.com/jamleowz/rescript/main/quota.sh"
 chmod +x /usr/bin/loop
 cat> /etc/systemd/system/quota.service << END
 [Unit]
@@ -526,7 +525,7 @@ User=root
 WantedBy=multi-user.target
 END
 
-wget -O /usr/bin/server "https://raw.githubusercontent.com/DindaPutriFN/FN-API/main/core/server"
+wget -O /usr/bin/server "https://raw.githubusercontent.com/jamleowz/rescript/main/server"
 cat> /etc/systemd/system/server.service << END
 [Unit]
 Description=WebAPI Server Proxy All OS By Rerechan02
@@ -550,7 +549,7 @@ cd
 clear
 
 # Install HTTP Proxy
-wget -O /usr/bin/http "https://raw.githubusercontent.com/DindaPutriFN/FN-API/main/core/http"
+wget -O /usr/bin/http "https://raw.githubusercontent.com/jamleowz/rescript/main/http"
 chmod +x /usr/bin/http
 cat> /etc/systemd/system/http.service << END
 [Unit]
@@ -572,7 +571,7 @@ WantedBy=multi-user.target
 END
 
 # Install OHP Server
-wget -O /root/ohp.sh "https://raw.githubusercontent.com/DindaPutriFN/Autoscript/main/ohp.sh"
+wget -O /root/ohp.sh "https://raw.githubusercontent.com/jamleowz/rescript/main/ohp.sh"
 chmod +x /root/ohp.sh
 cd /root
 ./ohp.sh
@@ -702,8 +701,8 @@ systemctl enable edu
 systemctl enable quota
 systemctl enable http
 systemctl enable trojan-go
-#systemctl enable splithttp
-#systemctl enable httpupgrade
+systemctl enable splithttp
+systemctl enable httpupgrade
 
 #Start
 systemctl start proxy
@@ -714,8 +713,8 @@ systemctl start edu
 systemctl start quota
 systemctl start http
 systemctl start trojan-go
-#systemctl start splithttp
-#systemctl start httpupgrade
+systemctl start splithttp
+systemctl start httpupgrade
 
 #Firewall UFW
 sudo ufw default deny incoming
@@ -770,8 +769,8 @@ systemctl restart dnstt
 systemctl restart quota
 systemctl restart http
 systemctl restart trojan-go
-#systemctl restart splithttp
-#systemctl restart httpupgrade
+systemctl restart splithttp
+systemctl restart httpupgrade
 #systemctl restart client-sldns
 #systemctl restart server-sldns
 
